@@ -1,0 +1,28 @@
+{
+  "name": "tool-selection-boundary-demo",
+  "version": "1.0.0",
+  "description": "Interactive demonstration proving why boundary-contrast few-shot examples improve AI agent tool selection over naive bulk examples",
+  "type": "module",
+  "main": "demo.js",
+  "bin": {
+    "demo": "./demo.js"
+  },
+  "scripts": {
+    "start": "node demo.js",
+    "naive": "node demo.js --naive",
+    "resilient": "node demo.js --resilient",
+    "benchmark": "node demo.js --benchmark"
+  },
+  "keywords": [
+    "ai-agents",
+    "tool-selection",
+    "few-shot",
+    "llm",
+    "architect-exam",
+    "claude"
+  ],
+  "license": "MIT",
+  "engines": {
+    "node": ">=18.0.0"
+  }
+}

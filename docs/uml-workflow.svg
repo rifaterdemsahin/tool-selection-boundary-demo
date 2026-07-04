@@ -1,0 +1,118 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1100 900" font-family="Menlo, monospace" font-size="13">
+  <defs>
+    <marker id="arrow" viewBox="0 0 10 10" refX="10" refY="5" markerWidth="6" markerHeight="6" orient="auto">
+      <path d="M 0 0 L 10 5 L 0 10 z" fill="#00d4aa"/>
+    </marker>
+    <marker id="arrow-naive" viewBox="0 0 10 10" refX="10" refY="5" markerWidth="6" markerHeight="6" orient="auto">
+      <path d="M 0 0 L 10 5 L 0 10 z" fill="#e94560"/>
+    </marker>
+    <marker id="arrow-resilient" viewBox="0 0 10 10" refX="10" refY="5" markerWidth="6" markerHeight="6" orient="auto">
+      <path d="M 0 0 L 10 5 L 0 10 z" fill="#00d4aa"/>
+    </marker>
+    <linearGradient id="bgGrad" x1="0" y1="0" x2="0" y2="1">
+      <stop offset="0%" stop-color="#0a0e1a"/>
+      <stop offset="100%" stop-color="#111827"/>
+    </linearGradient>
+  </defs>
+  <rect width="1100" height="900" fill="url(#bgGrad)" rx="8"/>
+  <text x="550" y="35" text-anchor="middle" fill="#00d4aa" font-size="16" font-weight="bold">🔀 Workflow Diagram — Runtime Sequence: Naive vs Resilient Tool Selection</text>
+  <text x="550" y="55" text-anchor="middle" fill="#64748b" font-size="12">Two parallel swimlanes showing the divergent paths of bulk vs boundary-contrast few-shot examples</text>
+
+  <rect x="30" y="80" width="500" height="800" rx="6" fill="rgba(233,69,96,0.03)" stroke="#e94560" stroke-width="1" stroke-dasharray="4"/>
+  <text x="280" y="100" text-anchor="middle" fill="#e94560" font-weight="bold" font-size="14">❌ Naive Path (Bulk Examples, No Boundary Reasoning)</text>
+
+  <rect x="570" y="80" width="500" height="800" rx="6" fill="rgba(0,212,170,0.03)" stroke="#00d4aa" stroke-width="1" stroke-dasharray="4"/>
+  <text x="820" y="100" text-anchor="middle" fill="#00d4aa" font-weight="bold" font-size="14">✅ Resilient Path (Boundary-Contrast Examples)</text>
+
+  <rect x="60" y="120" width="440" height="55" rx="6" fill="#1a1f35" stroke="#2a2f45"/>
+  <text x="280" y="142" text-anchor="middle" fill="#94a3b8" font-size="12">🧑 User sends: "I need help with my recent purchase"</text>
+  <text x="280" y="160" text-anchor="middle" fill="#64748b" font-size="11">Ambiguity: HIGH — {order, customer, refund} all plausible</text>
+
+  <rect x="600" y="120" width="440" height="55" rx="6" fill="#1a1f35" stroke="#2a2f45"/>
+  <text x="820" y="142" text-anchor="middle" fill="#94a3b8" font-size="12">🧑 User sends: "I need help with my recent purchase"</text>
+  <text x="820" y="160" text-anchor="middle" fill="#64748b" font-size="11">Ambiguity: HIGH — {order, customer, refund} all plausible</text>
+
+  <line x1="280" y1="175" x2="280" y2="200" stroke="#e94560" stroke-width="1.5" marker-end="url(#arrow-naive)"/>
+  <line x1="820" y1="175" x2="820" y2="200" stroke="#00d4aa" stroke-width="1.5" marker-end="url(#arrow-resilient)"/>
+
+  <rect x="60" y="200" width="440" height="80" rx="6" fill="#1a1f35" stroke="#2a2f45"/>
+  <text x="280" y="220" text-anchor="middle" fill="#e94560" font-size="12" font-weight="bold">Step 1: Build Prompt with 18 Bulk Examples</text>
+  <text x="280" y="240" text-anchor="middle" fill="#94a3b8" font-size="11">"Show my orders" → lookup_order (no context)</text>
+  <text x="280" y="258" text-anchor="middle" fill="#94a3b8" font-size="11">"Get customer info" → get_customer (no context)</text>
+  <text x="280" y="276" text-anchor="middle" fill="#64748b" font-size="11">No examples explain WHY or WHY-NOT a tool was chosen</text>
+
+  <rect x="600" y="200" width="440" height="80" rx="6" fill="#1a1f35" stroke="#2a2f45"/>
+  <text x="820" y="220" text-anchor="middle" fill="#00d4aa" font-size="12" font-weight="bold">Step 1: Build Prompt with 6 Boundary-Contrast Examples</text>
+  <text x="820" y="240" text-anchor="middle" fill="#94a3b8" font-size="11">"I need help with my recent purchase" → reasoning + rejected</text>
+  <text x="820" y="258" text-anchor="middle" fill="#94a3b8" font-size="11">"I want to return something" → reasoning + rejected</text>
+  <text x="820" y="276" text-anchor="middle" fill="#64748b" font-size="11">Each example EXPLICITLY rejects plausible alternatives</text>
+
+  <line x1="280" y1="280" x2="280" y2="310" stroke="#e94560" stroke-width="1.5" marker-end="url(#arrow-naive)"/>
+  <line x1="820" y1="280" x2="820" y2="310" stroke="#00d4aa" stroke-width="1.5" marker-end="url(#arrow-resilient)"/>
+
+  <rect x="60" y="310" width="440" height="70" rx="6" fill="#1a1f35" stroke="#2a2f45"/>
+  <text x="280" y="330" text-anchor="middle" fill="#e94560" font-size="12" font-weight="bold">Step 2: Model Processes Prompt</text>
+  <text x="280" y="350" text-anchor="middle" fill="#94a3b8" font-size="11">🔍 Searches 18 simple examples for keyword matches</text>
+  <text x="280" y="368" text-anchor="middle" fill="#94a3b8" font-size="11">💵 1,788 tokens consumed (2.5x bloat factor)</text>
+
+  <rect x="600" y="310" width="440" height="70" rx="6" fill="#1a1f35" stroke="#2a2f45"/>
+  <text x="820" y="330" text-anchor="middle" fill="#00d4aa" font-size="12" font-weight="bold">Step 2: Model Processes Prompt</text>
+  <text x="820" y="350" text-anchor="middle" fill="#94a3b8" font-size="11">🧠 Evaluates decision boundary from contrastive examples</text>
+  <text x="820" y="368" text-anchor="middle" fill="#94a3b8" font-size="11">💵 792 tokens consumed (baseline)</text>
+
+  <line x1="280" y1="380" x2="280" y2="410" stroke="#e94560" stroke-width="1.5" marker-end="url(#arrow-naive)"/>
+  <line x1="820" y1="380" x2="820" y2="410" stroke="#00d4aa" stroke-width="1.5" marker-end="url(#arrow-resilient)"/>
+
+  <rect x="60" y="410" width="440" height="80" rx="6" fill="#1a1f35" stroke="#e94560" stroke-width="1.5"/>
+  <text x="280" y="430" text-anchor="middle" fill="#e94560" font-size="12" font-weight="bold">Step 3: Model Makes Selection</text>
+  <text x="280" y="450" text-anchor="middle" fill="#94a3b8" font-size="11">Keyword "help" + "purchase" matches multiple examples</text>
+  <text x="280" y="468" text-anchor="middle" fill="#e94560" font-size="12">❌ Selects: cancel_order (surface-level match)</text>
+  <text x="280" y="486" text-anchor="middle" fill="#64748b" font-size="11">No boundary reasoning → wrong tool at decision boundary</text>
+
+  <rect x="600" y="410" width="440" height="80" rx="6" fill="#1a1f35" stroke="#00d4aa" stroke-width="1.5"/>
+  <text x="820" y="430" text-anchor="middle" fill="#00d4aa" font-size="12" font-weight="bold">Step 3: Model Makes Selection</text>
+  <text x="820" y="450" text-anchor="middle" fill="#94a3b8" font-size="11">Recall: get_customer rejected in example — "returns profile without order context"</text>
+  <text x="820" y="468" text-anchor="middle" fill="#00d4aa" font-size="12">✅ Selects: lookup_order (boundary-guided)</text>
+  <text x="820" y="486" text-anchor="middle" fill="#64748b" font-size="11">Explicit rejection reasoning guides correct selection</text>
+
+  <line x1="280" y1="490" x2="280" y2="530" stroke="#e94560" stroke-width="1.5" marker-end="url(#arrow-naive)"/>
+  <line x1="820" y1="490" x2="820" y2="530" stroke="#00d4aa" stroke-width="1.5" marker-end="url(#arrow-resilient)"/>
+
+  <rect x="60" y="530" width="440" height="70" rx="6" fill="#1a1f35" stroke="#e94560" stroke-width="1.5"/>
+  <text x="280" y="550" text-anchor="middle" fill="#e94560" font-size="12" font-weight="bold">Step 4: Coordinator Intervenes</text>
+  <text x="280" y="570" text-anchor="middle" fill="#94a3b8" font-size="11">⚠️ Wrong tool detected → re-prompt with correction</text>
+  <text x="280" y="590" text-anchor="middle" fill="#64748b" font-size="11">Cost: 2x tokens + latency penalty</text>
+
+  <rect x="600" y="530" width="440" height="70" rx="6" fill="#1a1f35" stroke="#00d4aa" stroke-width="1.5"/>
+  <text x="820" y="550" text-anchor="middle" fill="#00d4aa" font-size="12" font-weight="bold">Step 4: ✅ No Intervention Needed</text>
+  <text x="820" y="570" text-anchor="middle" fill="#94a3b8" font-size="11">Correct tool selected on first pass</text>
+  <text x="820" y="590" text-anchor="middle" fill="#64748b" font-size="11">Zero coordinator overhead</text>
+
+  <line x1="280" y1="600" x2="280" y2="640" stroke="#e94560" stroke-width="1.5" marker-end="url(#arrow-naive)"/>
+  <line x1="820" y1="600" x2="820" y2="640" stroke="#00d4aa" stroke-width="1.5" marker-end="url(#arrow-resilient)"/>
+
+  <rect x="60" y="640" width="440" height="70" rx="6" fill="#1a1f35" stroke="#e94560" stroke-width="1.5"/>
+  <text x="280" y="660" text-anchor="middle" fill="#e94560" font-size="12" font-weight="bold">Result: Wrong Tool Executed</text>
+  <text x="280" y="680" text-anchor="middle" fill="#94a3b8" font-size="11">cancel_order runs — user order may be cancelled incorrectly</text>
+  <text x="280" y="700" text-anchor="middle" fill="#e94560" font-size="11">🔴 Destructive action on wrong entity</text>
+
+  <rect x="600" y="640" width="440" height="70" rx="6" fill="#1a1f35" stroke="#00d4aa" stroke-width="1.5"/>
+  <text x="820" y="660" text-anchor="middle" fill="#00d4aa" font-size="12" font-weight="bold">Result: Correct Tool Executed</text>
+  <text x="820" y="680" text-anchor="middle" fill="#94a3b8" font-size="11">lookup_order runs — order details retrieved correctly</text>
+  <text x="820" y="700" text-anchor="middle" fill="#00d4aa" font-size="11">🟢 Safe, correct action on right entity</text>
+
+  <line x1="280" y1="710" x2="280" y2="750" stroke="#e94560" stroke-width="1.5" marker-end="url(#arrow-naive)"/>
+  <line x1="820" y1="710" x2="820" y2="750" stroke="#00d4aa" stroke-width="1.5" marker-end="url(#arrow-resilient)"/>
+
+  <rect x="60" y="750" width="440" height="55" rx="6" fill="#1a1f35" stroke="#2a2f45"/>
+  <text x="280" y="770" text-anchor="middle" fill="#e94560" font-size="12" font-weight="bold">📊 Outcome: 70% Accuracy, 3 Interventions</text>
+  <text x="280" y="790" text-anchor="middle" fill="#64748b" font-size="11">30% of requests require expensive re-prompting</text>
+
+  <rect x="600" y="750" width="440" height="55" rx="6" fill="#1a1f35" stroke="#2a2f45"/>
+  <text x="820" y="770" text-anchor="middle" fill="#00d4aa" font-size="12" font-weight="bold">📊 Outcome: 100% Accuracy, 0 Interventions</text>
+  <text x="820" y="790" text-anchor="middle" fill="#64748b" font-size="11">All requests handled correctly on first pass</text>
+
+  <text x="100" y="840" fill="#8b949e" font-size="11">Key Insight: Boundary-contrast examples train the model at the DECISION BOUNDARY between overlapping tools.</text>
+  <text x="100" y="860" fill="#8b949e" font-size="11">Bulk examples only teach surface-level keyword matching — they fail when keywords overlap.</text>
+  <text x="100" y="880" fill="#64748b" font-size="11">⚡ Built with DeepSeek V4 Flash — 1M Token Context Window</text>
+</svg>

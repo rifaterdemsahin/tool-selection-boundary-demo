@@ -1,0 +1,32 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 800 500" font-family="Menlo, monospace">
+  <defs><linearGradient id="bg" x1="0" y1="0" x2="0" y2="1"><stop offset="0%" stop-color="#0a0e1a"/><stop offset="100%" stop-color="#111827"/></linearGradient></defs>
+  <rect width="800" height="500" fill="url(#bg)" rx="8"/>
+  <text x="400" y="40" text-anchor="middle" fill="#00d4aa" font-size="20" font-weight="bold">✅ Resilient Approach: Boundary-Contrast Examples</text>
+
+  <rect x="50" y="70" width="700" height="55" rx="8" fill="#1a1f35" stroke="#2a2f45"/>
+  <text x="400" y="92" text-anchor="middle" fill="#00d4aa" font-size="14" font-weight="bold">🎯 6 Targeted Boundary-Contrast Examples</text>
+  <text x="400" y="112" text-anchor="middle" fill="#64748b" font-size="11">Each example: utterance + reasoning + correct tool + REJECTED alternatives</text>
+
+  <text x="400" y="152" text-anchor="middle" fill="#00d4aa" font-size="13">✅ All examples target AMBIGUOUS scenarios with BOUNDARY REASONING</text>
+
+  <line x1="400" y1="165" x2="400" y2="190" stroke="#00d4aa" stroke-width="1.5"/>
+
+  <rect x="50" y="190" width="700" height="90" rx="8" fill="#1a1f35" stroke="#00d4aa" stroke-width="1.5"/>
+  <text x="400" y="215" text-anchor="middle" fill="#00d4aa" font-size="13" font-weight="bold">🔍 Example Structure</text>
+  <text x="400" y="240" text-anchor="middle" fill="#94a3b8" font-size="12">🧑 "I need help with my recent purchase"</text>
+  <text x="400" y="258" text-anchor="middle" fill="#94a3b8" font-size="12">🧠 "recent purchase" → order context. get_customer rejected (returns profile, no orders)</text>
+  <text x="400" y="276" text-anchor="middle" fill="#00d4aa" font-size="12">🎯 Tool: lookup_order | ❌ Rejected: get_customer, cancel_order</text>
+
+  <line x1="400" y1="280" x2="400" y2="305" stroke="#00d4aa" stroke-width="1.5"/>
+
+  <rect x="100" y="305" width="600" height="90" rx="8" fill="#1a1f35" stroke="#00d4aa" stroke-width="1.5"/>
+  <text x="400" y="330" text-anchor="middle" fill="#00d4aa" font-size="13" font-weight="bold">📊 Results</text>
+  <text x="400" y="355" text-anchor="middle" fill="#94a3b8" font-size="12">💵 792 tokens/request (55% less than naive!)</text>
+  <text x="400" y="375" text-anchor="middle" fill="#94a3b8" font-size="12">🎯 100% Accuracy — model correctly identifies boundary</text>
+  <text x="400" y="395" text-anchor="middle" fill="#94a3b8" font-size="12">🛡️ Zero Coordinator Interventions</text>
+
+  <rect x="250" y="415" width="300" height="40" rx="25" fill="rgba(0,212,170,0.15)" stroke="#00d4aa" stroke-width="2"/>
+  <text x="400" y="440" text-anchor="middle" fill="#00d4aa" font-size="14" font-weight="bold">🟢 Correct tool on first pass!</text>
+
+  <text x="400" y="480" text-anchor="middle" fill="#8b949e" font-size="11">⚡ Built with DeepSeek V4 Flash</text>
+</svg>

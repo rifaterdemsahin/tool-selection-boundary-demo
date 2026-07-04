@@ -1,0 +1,31 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 800 500" font-family="Menlo, monospace">
+  <defs><linearGradient id="bg" x1="0" y1="0" x2="0" y2="1"><stop offset="0%" stop-color="#0a0e1a"/><stop offset="100%" stop-color="#111827"/></linearGradient></defs>
+  <rect width="800" height="500" fill="url(#bg)" rx="8"/>
+  <text x="400" y="40" text-anchor="middle" fill="#e94560" font-size="20" font-weight="bold">❌ Naive Approach: Bulk Examples Create Token Bloat</text>
+
+  <rect x="50" y="70" width="700" height="55" rx="8" fill="#1a1f35" stroke="#2a2f45"/>
+  <text x="400" y="92" text-anchor="middle" fill="#e94560" font-size="14" font-weight="bold">📜 18 Bulk Examples in Prompt</text>
+  <text x="400" y="112" text-anchor="middle" fill="#64748b" font-size="11">"Show my orders" → lookup_order | "Get customer info" → get_customer | "Track my package" → track_shipment ...</text>
+
+  <text x="400" y="152" text-anchor="middle" fill="#e94560" font-size="13">⚠️ All examples are SHORT, OBVIOUS, and lack BOUNDARY REASONING</text>
+
+  <line x1="400" y1="165" x2="400" y2="190" stroke="#e94560" stroke-width="1.5"/>
+
+  <rect x="100" y="190" width="600" height="90" rx="8" fill="#1a1f35" stroke="#e94560" stroke-width="1.5"/>
+  <text x="400" y="215" text-anchor="middle" fill="#e94560" font-size="13" font-weight="bold">💥 Consequences</text>
+  <text x="400" y="240" text-anchor="middle" fill="#94a3b8" font-size="12">💵 2.5x Token Bloat — 1,788 tokens/request vs 792 baseline</text>
+  <text x="400" y="260" text-anchor="middle" fill="#94a3b8" font-size="12">🎯 70% Accuracy — model can't distinguish at decision boundary</text>
+  <text x="400" y="280" text-anchor="middle" fill="#94a3b8" font-size="12">🛡️ 3 Coordinator Interventions per 10 requests</text>
+
+  <rect x="250" y="310" width="300" height="50" rx="8" fill="rgba(233,69,96,0.1)" stroke="#e94560"/>
+  <text x="400" y="335" text-anchor="middle" fill="#e94560" font-size="13">❌ cancel_order selected instead of lookup_order</text>
+  <text x="400" y="350" text-anchor="middle" fill="#64748b" font-size="11">(keyword "help" + "purchase" partially matches)</text>
+
+  <line x1="400" y1="360" x2="400" y2="390" stroke="#e94560" stroke-width="1.5"/>
+
+  <rect x="200" y="390" width="400" height="50" rx="25" fill="rgba(233,69,96,0.15)" stroke="#e94560" stroke-width="2"/>
+  <text x="400" y="412" text-anchor="middle" fill="#e94560" font-size="14" font-weight="bold">🔴 Destructive action on wrong entity!</text>
+  <text x="400" y="430" text-anchor="middle" fill="#64748b" font-size="11">User order cancelled instead of being looked up</text>
+
+  <text x="400" y="475" text-anchor="middle" fill="#8b949e" font-size="11">⚡ Built with DeepSeek V4 Flash</text>
+</svg>

@@ -1,0 +1,108 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1100 750" font-family="Menlo, monospace" font-size="13">
+  <defs>
+    <marker id="arrow" viewBox="0 0 10 10" refX="10" refY="5" markerWidth="6" markerHeight="6" orient="auto">
+      <path d="M 0 0 L 10 5 L 0 10 z" fill="#00d4aa"/>
+    </marker>
+    <marker id="arrow-naive" viewBox="0 0 10 10" refX="10" refY="5" markerWidth="6" markerHeight="6" orient="auto">
+      <path d="M 0 0 L 10 5 L 0 10 z" fill="#e94560"/>
+    </marker>
+    <marker id="arrow-empty" viewBox="0 0 10 10" refX="10" refY="5" markerWidth="6" markerHeight="6" orient="auto">
+      <path d="M 0 0 L 10 5 L 0 10 z" fill="#64748b"/>
+    </marker>
+    <linearGradient id="bgGrad" x1="0" y1="0" x2="0" y2="1">
+      <stop offset="0%" stop-color="#0a0e1a"/>
+      <stop offset="100%" stop-color="#111827"/>
+    </linearGradient>
+  </defs>
+
+  <rect width="1100" height="750" fill="url(#bgGrad)" rx="8"/>
+
+  <text x="550" y="35" text-anchor="middle" fill="#00d4aa" font-size="16" font-weight="bold">📐 Class Diagram — Module Structure &amp; Dependencies</text>
+
+  <rect x="40" y="60" width="310" height="200" rx="6" fill="#1a1f35" stroke="#2a2f45" stroke-width="1.5"/>
+  <rect x="40" y="60" width="310" height="32" rx="6" fill="#7c3aed" opacity="0.3"/>
+  <text x="195" y="80" text-anchor="middle" fill="#a78bfa" font-weight="bold" font-size="14">📦 Domain (domain.js)</text>
+  <text x="55" y="108" fill="#94a3b8" font-size="12">+ Tool(name, desc, params, category)</text>
+  <text x="55" y="128" fill="#94a3b8" font-size="12">+ AgentRequest(id, utterance, expectedTool)</text>
+  <text x="55" y="148" fill="#94a3b8" font-size="12">+ ToolSelectionResult(reqId, selectedTool, ...)</text>
+  <text x="55" y="168" fill="#94a3b8" font-size="12">+ FewShotExample(utterance, correct, reasoning)</text>
+  <text x="55" y="188" fill="#94a3b8" font-size="12">+ TOOLS (Object: 6 tools)</text>
+  <text x="55" y="208" fill="#94a3b8" font-size="12">+ AMBIGUOUS_REQUESTS (10 requests)</text>
+  <text x="55" y="228" fill="#94a3b8" font-size="12">+ NAIVE / BOUNDARY example arrays</text>
+  <text x="55" y="248" fill="#94a3b8" font-size="12">+ getToolByName(name) → Tool</text>
+
+  <rect x="40" y="280" width="310" height="170" rx="6" fill="#1a1f35" stroke="#2a2f45" stroke-width="1.5"/>
+  <rect x="40" y="280" width="310" height="32" rx="6" fill="#f0c040" opacity="0.2"/>
+  <text x="195" y="300" text-anchor="middle" fill="#f0c040" font-weight="bold" font-size="14">⚙️ Infrastructure (infrastructure.js)</text>
+  <text x="55" y="328" fill="#94a3b8" font-size="12">+ MockLLM(systemPrompt, fewShotExamples)</text>
+  <text x="55" y="348" fill="#94a3b8" font-size="12">  - estimateTokens(text) → Number</text>
+  <text x="55" y="368" fill="#94a3b8" font-size="12">  - buildPrompt(request) → String</text>
+  <text x="55" y="388" fill="#94a3b8" font-size="12">  + selectTool(request) → SelectionResult</text>
+  <text x="55" y="408" fill="#94a3b8" font-size="12">  - simulateSelection(request) → {tool, reasoning}</text>
+  <text x="55" y="428" fill="#94a3b8" font-size="12">  + getStats() → {tokensUsed, callCount, avg}</text>
+
+  <rect x="40" y="470" width="310" height="100" rx="6" fill="#1a1f35" stroke="#2a2f45" stroke-width="1.5"/>
+  <rect x="40" y="470" width="310" height="32" rx="6" fill="#00d4aa" opacity="0.15"/>
+  <text x="195" y="490" text-anchor="middle" fill="#00d4aa" font-weight="bold" font-size="14">🧰 Utils (utils.js)</text>
+  <text x="55" y="518" fill="#94a3b8" font-size="12">+ sleep(ms), formatTokens(n), calculateAccuracy()</text>
+  <text x="55" y="538" fill="#94a3b8" font-size="12">+ generateBar(), generateComparisonBar()</text>
+  <text x="55" y="558" fill="#94a3b8" font-size="12">+ padRight(), formatPercentage()</text>
+
+  <rect x="500" y="60" width="280" height="130" rx="6" fill="#1a1f35" stroke="#2a2f45" stroke-width="1.5"/>
+  <rect x="500" y="60" width="280" height="32" rx="6" fill="#e94560" opacity="0.2"/>
+  <text x="640" y="80" text-anchor="middle" fill="#e94560" font-weight="bold" font-size="14">❌ Subagent Naive</text>
+  <text x="515" y="108" fill="#94a3b8" font-size="12">subagent-naive.js</text>
+  <text x="515" y="128" fill="#94a3b8" font-size="12">  createNaiveLLM() → MockLLM</text>
+  <text x="515" y="148" fill="#94a3b8" font-size="12">  Uses: NAIVE_FEW_SHOT_EXAMPLES</text>
+  <text x="515" y="168" fill="#94a3b8" font-size="12">  Prompt factor: 2.5x bloat</text>
+
+  <rect x="500" y="210" width="280" height="130" rx="6" fill="#1a1f35" stroke="#2a2f45" stroke-width="1.5"/>
+  <rect x="500" y="210" width="280" height="32" rx="6" fill="#00d4aa" opacity="0.15"/>
+  <text x="640" y="230" text-anchor="middle" fill="#00d4aa" font-weight="bold" font-size="14">✅ Subagent Resilient</text>
+  <text x="515" y="258" fill="#94a3b8" font-size="12">subagent-resilient.js</text>
+  <text x="515" y="278" fill="#94a3b8" font-size="12">  createResilientLLM() → MockLLM</text>
+  <text x="515" y="298" fill="#94a3b8" font-size="12">  Uses: BOUNDARY_FEW_SHOT_EXAMPLES</text>
+  <text x="515" y="318" fill="#94a3b8" font-size="12">  Prompt factor: 1.0x (baseline)</text>
+
+  <rect x="500" y="360" width="280" height="120" rx="6" fill="#1a1f35" stroke="#2a2f45" stroke-width="1.5"/>
+  <rect x="500" y="360" width="280" height="32" rx="6" fill="#f0c040" opacity="0.2"/>
+  <text x="640" y="380" text-anchor="middle" fill="#f0c040" font-weight="bold" font-size="14">🎮 Coordinator</text>
+  <text x="515" y="408" fill="#94a3b8" font-size="12">coordinator.js</text>
+  <text x="515" y="428" fill="#94a3b8" font-size="12">+ processRequest(request) → Result</text>
+  <text x="515" y="448" fill="#94a3b8" font-size="12">+ getStats() → {accuracy, interventions, ...}</text>
+  <text x="515" y="468" fill="#94a3b8" font-size="12">  Counts failures, tracks metrics</text>
+
+  <rect x="500" y="500" width="280" height="65" rx="6" fill="#1a1f35" stroke="#00d4aa" stroke-width="1.5"/>
+  <text x="640" y="523" text-anchor="middle" fill="#00d4aa" font-weight="bold" font-size="14">📟 Entry Point</text>
+  <text x="515" y="545" fill="#94a3b8" font-size="12">demo.js (CLI) / index.html (Web)</text>
+
+  <line x1="350" y1="160" x2="500" y2="115" stroke="#00d4aa" stroke-width="1.5" marker-end="url(#arrow)"/>
+  <line x1="350" y1="160" x2="500" y2="265" stroke="#00d4aa" stroke-width="1.5" marker-end="url(#arrow)"/>
+  <line x1="350" y1="345" x2="500" y2="345" stroke="#64748b" stroke-width="1.5" marker-end="url(#arrow-empty)"/>
+  <line x1="350" y1="520" x2="500" y2="520" stroke="#64748b" stroke-width="1.5" marker-end="url(#arrow-empty)"/>
+  <line x1="500" y1="415" x2="350" y2="415" stroke="#64748b" stroke-width="1" stroke-dasharray="4"/>
+  <line x1="780" y1="125" x2="780" y2="210" stroke="#e94560" stroke-width="1" stroke-dasharray="4"/>
+  <line x1="780" y1="275" x2="780" y2="360" stroke="#00d4aa" stroke-width="1" stroke-dasharray="4"/>
+  <line x1="640" y1="480" x2="640" y2="500" stroke="#00d4aa" stroke-width="1.5" marker-end="url(#arrow)"/>
+
+  <text x="425" y="108" fill="#8b949e" font-size="11" transform="rotate(-20, 425, 108)">imports ▸</text>
+  <text x="425" y="255" fill="#8b949e" font-size="11" transform="rotate(20, 425, 255)">imports ▸</text>
+
+  <text x="100" y="620" fill="#64748b" font-size="12">Dependency Direction: domain ← infrastructure ← subagents ← coordinator ← entry</text>
+  <text x="100" y="640" fill="#64748b" font-size="12">Duck-Typed Contract: both subagents implement createLLM() → MockLLM</text>
+  <text x="100" y="660" fill="#8b949e" font-size="11">⚡ Built with DeepSeek V4 Flash — 1M Token Context Window</text>
+
+  <rect x="830" y="60" width="240" height="200" rx="6" fill="#1a1f35" stroke="#2a2f45" stroke-width="1.5"/>
+  <text x="950" y="82" text-anchor="middle" fill="#f0c040" font-weight="bold" font-size="12">📋 Legend</text>
+  <rect x="845" y="95" width="12" height="12" fill="#7c3aed" opacity="0.5" rx="2"/>
+  <text x="865" y="105" fill="#94a3b8" font-size="11">Data Models (domain)</text>
+  <rect x="845" y="120" width="12" height="12" fill="#f0c040" opacity="0.5" rx="2"/>
+  <text x="865" y="130" fill="#94a3b8" font-size="11">Infrastructure</text>
+  <rect x="845" y="145" width="12" height="12" fill="#e94560" opacity="0.5" rx="2"/>
+  <text x="865" y="155" fill="#94a3b8" font-size="11">Naive Subagent ❌</text>
+  <rect x="845" y="170" width="12" height="12" fill="#00d4aa" opacity="0.5" rx="2"/>
+  <text x="865" y="180" fill="#94a3b8" font-size="11">Resilient Subagent ✅</text>
+  <text x="865" y="200" fill="#64748b" font-size="11">── dependency</text>
+  <text x="865" y="220" fill="#64748b" font-size="11">- - optional/implied</text>
+  <text x="865" y="240" fill="#64748b" font-size="11">▸ usage/implements</text>
+</svg>

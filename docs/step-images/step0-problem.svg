@@ -1,0 +1,32 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 800 500" font-family="Menlo, monospace">
+  <defs><linearGradient id="bg" x1="0" y1="0" x2="0" y2="1"><stop offset="0%" stop-color="#0a0e1a"/><stop offset="100%" stop-color="#111827"/></linearGradient></defs>
+  <rect width="800" height="500" fill="url(#bg)" rx="8"/>
+  <text x="400" y="40" text-anchor="middle" fill="#e94560" font-size="20" font-weight="bold">⚠️ The Problem: Overlapping Tool Selection</text>
+  <text x="400" y="65" text-anchor="middle" fill="#94a3b8" font-size="13">Agent confuses similar tools when user requests are ambiguous</text>
+
+  <rect x="175" y="100" width="450" height="50" rx="25" fill="#1a1f35" stroke="#f0c040" stroke-width="1.5"/>
+  <text x="400" y="130" text-anchor="middle" fill="#f0c040" font-size="15">🧑 "I need help with my recent purchase"</text>
+
+  <line x1="400" y1="150" x2="400" y2="180" stroke="#64748b" stroke-width="1.5" marker-end="url(#arrow)"/>
+
+  <rect x="100" y="180" width="250" height="100" rx="8" fill="#1a1f35" stroke="#2a2f45"/>
+  <text x="225" y="205" text-anchor="middle" fill="#94a3b8" font-size="13">🤖 Agent considers...</text>
+  <text x="225" y="225" text-anchor="middle" fill="#e94560" font-size="12">❌ cancel_order</text>
+  <text x="225" y="245" text-anchor="middle" fill="#e94560" font-size="12">❌ process_refund</text>
+  <text x="225" y="265" text-anchor="middle" fill="#e94560" font-size="12">❌ get_customer</text>
+
+  <rect x="450" y="180" width="250" height="100" rx="8" fill="#1a1f35" stroke="#2a2f45"/>
+  <text x="575" y="205" text-anchor="middle" fill="#94a3b8" font-size="13">🎯 Correct answer</text>
+  <text x="575" y="235" text-anchor="middle" fill="#00d4aa" font-size="14" font-weight="bold">✅ lookup_order</text>
+  <text x="575" y="260" text-anchor="middle" fill="#64748b" font-size="11">"purchase" → order context</text>
+
+  <line x1="225" y1="280" x2="225" y2="320" stroke="#e94560" stroke-width="1.5"/>
+  <line x1="575" y1="280" x2="575" y2="320" stroke="#00d4aa" stroke-width="1.5"/>
+
+  <rect x="100" y="320" width="600" height="50" rx="8" fill="rgba(233,69,96,0.1)" stroke="#e94560" stroke-width="1.5"/>
+  <text x="400" y="340" text-anchor="middle" fill="#e94560" font-size="13">❌ Without boundary reasoning: selects cancel_order (wrong!)</text>
+  <text x="400" y="358" text-anchor="middle" fill="#e94560" font-size="13">✅ With boundary reasoning: selects lookup_order (correct!)</text>
+
+  <text x="400" y="420" text-anchor="middle" fill="#64748b" font-size="12">💡 Solution: Add few-shot examples that explain WHY one tool was chosen over alternatives</text>
+  <text x="400" y="445" text-anchor="middle" fill="#8b949e" font-size="11">⚡ Built with DeepSeek V4 Flash</text>
+</svg>
