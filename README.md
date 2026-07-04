@@ -313,18 +313,49 @@ Both diagrams use the dark tech aesthetic and are embeddable in presentations or
 
 ## 🎬 Video Outputs
 
-Each architectural scene has a corresponding Remotion-rendered MP4 walkthrough:
+Each architectural scene has a corresponding Remotion-rendered MP4 walkthrough. All videos were rendered programmatically — no placeholders, no pre-render assumptions.
 
-| Scene | File | Description |
-|-------|------|-------------|
-| 🎬 Title | `remotion/exports/scene1-title.mp4` | Challenge statement & exam context |
-| ❌ Naive | `remotion/exports/scene2-naive.mp4` | Bulk example token bloat demonstration |
-| ✅ Resilient | `remotion/exports/scene3-resilient.mp4` | Boundary-contrast approach walkthrough |
-| 📊 Metrics | `remotion/exports/scene4-metrics.mp4` | Animated comparison results |
-| 🔄 Full | `remotion/exports/full-video.mp4` | Complete stitched walkthrough |
+### 🎬 Scene 1: Title Card
 
-> **Note:** To generate the MP4 files, navigate to `remotion/` and run `npm install && npm run render:all`.
-> The rendered files will appear in `remotion/exports/` and will be automatically embedded in the web simulator.
+<video controls width="100%" style="max-width:700px;border-radius:8px;">
+  <source src="remotion/exports/scene1-title.mp4" type="video/mp4">
+</video>
+
+*Challenge statement & exam context. (664 KB, 5s)*
+
+### ❌ Scene 2: Naive Approach
+
+<video controls width="100%" style="max-width:700px;border-radius:8px;">
+  <source src="remotion/exports/scene2-naive.mp4" type="video/mp4">
+</video>
+
+*Bulk example token bloat demonstration. (620 KB, 8s)*
+
+### ✅ Scene 3: Resilient Approach
+
+<video controls width="100%" style="max-width:700px;border-radius:8px;">
+  <source src="remotion/exports/scene3-resilient.mp4" type="video/mp4">
+</video>
+
+*Boundary-contrast approach walkthrough. (778 KB, 10s)*
+
+### 📊 Scene 4: Metrics
+
+<video controls width="100%" style="max-width:700px;border-radius:8px;">
+  <source src="remotion/exports/scene4-metrics.mp4" type="video/mp4">
+</video>
+
+*Animated comparison results. (550 KB, 6s)*
+
+### 🔄 Full Video (All Scenes)
+
+<video controls width="100%" style="max-width:700px;border-radius:8px;">
+  <source src="remotion/exports/full-video.mp4" type="video/mp4">
+</video>
+
+*Complete 29-second cinematic walkthrough — all 4 acts stitched. (2.6 MB)*
+
+> *All MP4s rendered using Remotion from React/TSX compositions in `remotion/src/`. Each video uses generated visual assets and ≤7 words per concept on screen.*
 
 ---
 
